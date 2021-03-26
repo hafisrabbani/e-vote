@@ -1,4 +1,4 @@
-# Sistem Voting Berbasis Online Versi 1.0
+# Sistem Voting Berbasis Online Versi 1.2
 Sistem voting online versi 1
 
 # Login Pemilih
