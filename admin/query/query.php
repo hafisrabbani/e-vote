@@ -156,6 +156,95 @@ class insert_user
 
 
 
+class admin
+{
+  public $id = "";
+  public function __construct($id = "")
+  {
+    $this->id = $id;
+  }
+  public function update($nama, $user, $pass = "")
+  {
+    // koneksi
+    require_once 'conn.php';
+    $conn = new koneksi();
+    $conn = $conn->conn();
+    // query
+    $id = $this->id;
+    // cek password diisi atau tidak
+    if ($pass == "") {
+      // update tanpa password
+      $data = mysqli_query($conn, "UPDATE data_admin SET nama='$nama',username='$user' WHERE id='$id'");
+      return $data;
+      exit;
+    } else {
+      // update dengan password
+      $data = mysqli_query($conn, "UPDATE data_admin SET nama='$nama',username='$user',password='$pass' WHERE id='$id'");
+      return $data;
+      exit;
+    }
+  }
+  // reset pemilihan
+  public function reset()
+  {
+    require_once 'conn.php';
+    $conn = new koneksi();
+    $conn = $conn->conn();
+    // query
+    mysqli_query($conn, "UPDATE pemilih SET status_pemilih = '0'");
+    mysqli_query($conn, "UPDATE kandidat SET perolehan='0'");
+  }
+}
+
+
+
+class user
+{
+  public function total_data()
+  {
+    require_once 'conn.php';
+    $conn = new koneksi();
+    $conn = $conn->conn();
+    // query
+    $data = mysqli_query($conn, "SELECT * FROM pemilih");
+    $data = mysqli_num_rows($data);
+    return $data;
+  }
+  public function sudah_pilih()
+  {
+    require_once 'conn.php';
+    $conn = new koneksi();
+    $conn = $conn->conn();
+    // query
+    $data = mysqli_query($conn, "SELECT * FROM pemilih WHERE status_pemilih='1'");
+    $data = mysqli_num_rows($data);
+    return $data;
+  }
+  public function belum_pilih()
+  {
+    require_once 'conn.php';
+    $conn = new koneksi();
+    $conn = $conn->conn();
+    // query
+    $data = mysqli_query($conn, "SELECT * FROM pemilih WHERE status_pemilih='0'");
+    $data = mysqli_num_rows($data);
+    return $data;
+  }
+
+  public function total_kandidat()
+  {
+    require_once 'conn.php';
+    $conn = new koneksi();
+    $conn = $conn->conn();
+    // query
+    $data = mysqli_query($conn, "SELECT * FROM kandidat");
+    $data = mysqli_num_rows($data);
+    return $data;
+  }
+}
+
+
+
 class insert_kandidat
 {
   public $nama = "";

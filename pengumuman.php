@@ -25,6 +25,7 @@ $result = mysqli_query($conn->conn(), "SELECT * FROM kandidat");
     <h1 style="text-align:center;">Total Perolehan Suara</h1>
     <br>
     <canvas id="myChart"></canvas>
+    <small class="text-center">*Harap Refresh Untuk Melihat Data Terbaru Karena data belum realtime</small>
   </div>
 
 

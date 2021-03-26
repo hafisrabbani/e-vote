@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
   $misi = htmlspecialchars(($_POST['misi']));
   $insert = new edit_kandidat($id, $nama, $kelas, $visi, $misi, $image,);
   if ($insert->input() === true) {
-    echo "<script>alert('Kandidat Berhasil Dibuat');window.location.replace('kandidat.php');</script>";
+    echo "<script>alert('Kandidat Berhasil Diubah');window.location.replace('kandidat.php');</script>";
   } else {
     echo "<script>alert('Kandidat Gagal Dibuat');</script>";
   }

@@ -1,0 +1,14 @@
+-Username : admin
+-Password : 123
+
+login admin
+/admin
+
+login pemilih
+/
+
+db name
+vote
+
+konfigurasi db
+/admin/query/conn.php

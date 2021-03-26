@@ -4,6 +4,10 @@ if (!isset($_SESSION["login_user"])) {
   header("Location: index.php");
 }
 $id = $_GET["id"];
+if (empty($_GET)) {
+  header("Location: display.php");
+  exit;
+}
 if (!is_numeric($id)) {
   echo "No Sqli Injection";
   die;
@@ -25,65 +29,13 @@ $data = mysqli_query($conn->conn(), "SELECT * FROM kandidat WHERE id = $id");
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .bgp {
-      background-color: #707cd2;
-    }
-
-    .bgs {
-      background-color: #7ace4c;
-    }
-
-    .jumbotron {
-      text-align: center;
-      padding-top: 10rem;
-      padding-bottom: 10rem;
-      text-shadow: 2px 2px #000;
-    }
-
-    .lead span {
-      color: orange;
-      font-weight: bold;
-    }
-
-    .bg-cover {
-      background-size: cover;
-      color: white;
-      background-position: center center;
-      position: relative;
-      z-index: -2;
-    }
-
-    .overlay {
-      background-color: #000;
-      opacity: 0.5;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      z-index: -1;
-    }
-
-    .bg-cover {
-      background-image: url('img_uploads/garo.jpg');
-    }
-  </style>
-  <title>E Vote Patroli Keamanan Siswa</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/script.js"></script>
+  <title>E Vote Ade Hafis Rabbani</title>
 </head>
 
 <body style="background-color:#edf1f5;">
-  <div class="jumbotron jumbotron bg-cover">
-    <div class="overlay"></div>
-    <div class="container">
-      <h3 class="display-4 mb-1">E Voting Patroli Keamanan Siswa</h3>
-      <p class="lead"><span><?= date("d-m-Y"); ?></span></p>
-    </div>
-  </div>
+  <?php include 'assets/include/jumbotron.php'; ?>
   <div class="container" style="border-radius:20px;">
     <h3 class="text-center">Detail Kandidat</h3>
     <div class="row justify-content-center">
@@ -105,17 +57,26 @@ $data = mysqli_query($conn->conn(), "SELECT * FROM kandidat WHERE id = $id");
                 </div>
               </div>
             </div>
-            <a href="voting.php?id=<?= $rows["id"]; ?>" class="btn bgs text-white">Pilih</a>
+            <div class="row justify-content-center">
+              <div class="col-12 text-center">
+                <a href="voting.php?id=<?= $rows["id"]; ?>" class="btn bgs text-white px-5" style="width: 100%;">Pilih</a>
+                <a href="display.php" class="btn text-white bgp px-4" style="width: 100%;">Kembali</a>
+              </div>
+            </div>
           </div>
         </div>
       <?php endforeach; ?>
     </div>
-    <p class="text-center mt-5">2021 &copy; Patroli Keamanan Siswa</p>
-    <p class="text-center">Powered by <a href="https://blog.destroysquad.com/">Destroysquad.com</a></p>
   </div>
+  <?php include 'assets/include/footer.php'; ?>
 
   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      startTime();
+    });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 

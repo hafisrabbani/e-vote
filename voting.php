@@ -5,6 +5,10 @@ if (!isset($_SESSION["login_user"])) {
   header("Location: index.php");
 }
 $id = $_GET["id"];
+if (empty($_GET)) {
+  header("Location: display.php");
+  exit;
+}
 if (!is_numeric($id)) {
   echo "No Sqli Injection";
   die;

@@ -1,3 +1,7 @@
+<!-- data table -->
+<link rel="stylesheet" src="http://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+<script type="javascript" src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
 <!-- ============================================================== -->
@@ -20,11 +24,11 @@
         <!-- ============================================================== -->
         <!-- Logo -->
         <!-- ============================================================== -->
-        <a class="navbar-brand" href="dashboard.html">
+        <a class="navbar-brand" href="index.php">
           <!-- Logo icon -->
           <b class="logo-icon">
             <!-- Dark Logo icon -->
-            <img src="plugins/images/logo-icon.png" alt="homepage" />
+            <img src="asset/image/logo.png" alt="homepage" style="height:30px;" />
           </b>
           <!--End Logo icon -->
           <!-- Logo text -->
@@ -50,18 +54,6 @@
         <!-- Right side toggle and nav items -->
         <!-- ============================================================== -->
         <ul class="navbar-nav ml-auto d-flex align-items-center">
-
-          <!-- ============================================================== -->
-          <!-- Search -->
-          <!-- ============================================================== -->
-          <li class=" in">
-            <form role="search" class="app-search d-none d-md-block mr-3">
-              <input type="text" placeholder="Search..." class="form-control mt-0">
-              <a href="" class="active">
-                <i class="fa fa-search"></i>
-              </a>
-            </form>
-          </li>
           <!-- ============================================================== -->
           <!-- User profile and search -->
           <!-- ============================================================== -->

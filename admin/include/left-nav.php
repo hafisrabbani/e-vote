@@ -13,13 +13,13 @@
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="user.php" aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-users" aria-hidden="true"></i>
                                 <span class="hide-menu">Daftar Pemilih</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="kandidat.php" aria-expanded="false">
-                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Kandidat</span>
                             </a>
                         </li>
@@ -27,6 +27,12 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="perolehan.php" aria-expanded="false">
                                 <i class="fas fa-history" aria-hidden="true"></i>
                                 <span class="hide-menu">Perolehan Suara</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="settings.php" aria-expanded="false">
+                                <i class="fas fa-wrench" aria-hidden="true"></i>
+                                <span class="hide-menu">Setting Akun</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -38,7 +44,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="about.php" aria-expanded="false">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
-                                <span class="hide-menu">Tentang Aplikasii</span>
+                                <span class="hide-menu">Tentang Aplikasi</span>
                             </a>
                         </li>
                     </ul>

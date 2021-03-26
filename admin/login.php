@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
   if ($cek === 1) {
     $row = mysqli_fetch_assoc($login->login());
     if ($i = (password_verify($pass, $row['password']))) {
+      $_SESSION["id"] = $row["id"];
       $_SESSION['login'] = true;
       header("Location: index.php");
       exit;
@@ -67,10 +68,10 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body style="background-color:#eaeaea;">
-  <div style="position: absolute; left: 50%; top:50%; transform:translate(-50%,-50%); background-color:white;padding: 45px;">
+  <div class="p-5" style="position: absolute; left: 50%; top:50%; transform:translate(-50%,-50%); background-color:white;padding: 45px;">
     <form method="post" action="">
       <div class="form-group">
-        <h3 class="text-center">Login admin!</h3>
+        <h3 class="text-center">Login Admin!</h3>
         <?php if (isset($eror)) : ?>
           <p class="text-center eror" style="color: red; font-style: italic;">Username / Password Salah</p>
         <?php endif; ?>

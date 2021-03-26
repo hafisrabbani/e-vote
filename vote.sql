@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2021 at 08:38 AM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Generation Time: Mar 13, 2021 at 09:15 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `data_admin` (
   `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -38,8 +38,8 @@ CREATE TABLE `data_admin` (
 -- Dumping data for table `data_admin`
 --
 
-INSERT INTO `data_admin` (`id`, `username`, `password`) VALUES
-(1, 'admin123', '$2y$10$VFFzp23HzZQNlU0rXF9W4uXiteyKWatJgEt3cYkcBgxToHAAASyEy');
+INSERT INTO `data_admin` (`id`, `nama`, `username`, `password`) VALUES
+(1, 'Hafis', 'admin', '$2y$10$/xJEjgdxlhR.QcbCFJTHkektm9hdr4EplnPnVfjL8RrK3iNc1554W');
 
 -- --------------------------------------------------------
 
@@ -62,7 +62,7 @@ CREATE TABLE `kandidat` (
 --
 
 INSERT INTO `kandidat` (`id`, `nama`, `kelas`, `visi`, `misi`, `foto`, `perolehan`) VALUES
-(13, 'admin', 'x tkj 1', 'mabar codm', 'mabar codm', 'kandidat_5ff95d23ca84c.png', 0);
+(14, 'kandidat 1', 'XI TKJ 1', 'VISI', 'MISI', 'kandidat_604a2d777b126.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -78,6 +78,14 @@ CREATE TABLE `pemilih` (
   `perwakilan` varchar(255) NOT NULL,
   `status_pemilih` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pemilih`
+--
+
+INSERT INTO `pemilih` (`id`, `nisn`, `nama`, `password`, `perwakilan`, `status_pemilih`) VALUES
+(102, '1', 'hafis', '1', 'MPK', 0),
+(103, '4', 'Yazid', '7oeha', 'Pramuka', 0);
 
 --
 -- Indexes for dumped tables
@@ -117,13 +125,13 @@ ALTER TABLE `data_admin`
 -- AUTO_INCREMENT for table `kandidat`
 --
 ALTER TABLE `kandidat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `pemilih`
 --
 ALTER TABLE `pemilih`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -83,25 +83,23 @@ if (isset($_POST['submit'])) {
   0 41.8px 33.4px rgba(0, 0, 0, 0.086),
   0 100px 80px rgba(0, 0, 0, 0.12)
 ;" class="text-center">
-    <img src="img_uploads/pks.png" style="width:200px; height:200px;">
+    <img src="https://logowik.com/content/uploads/images/visual-studio-code7642.jpg" style="height:200px; width:250px;">
     <h3 class="text-center">Login Voting!</h3>
     <?php if (isset($eror)) : ?>
       <p class="eror" style="color: red; font-style: italic;">NISN / Password Salah</p>
     <?php endif; ?>
     <form method="post" action="">
       <div class="form-group">
-        <label for="nisn">NISN</label>
-        <input type="text" class="form-control" id="nisn" placeholder="xxxx/xxx.xxx" name="nisn" required>
+        <label for="nisn">Username</label>
+        <input type="text" class="form-control" id="nisn" placeholder="Username" name="nisn" required>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pass" required>
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" name="pass" required>
       </div>
       <input type="submit" name="submit" value="login" class="btn btn-primary mt-4 mb-4">
       <br>
-      <small class="text-center">2021 &copy; Patroli Keamanan Siswa</small>
-      <br>
-      <small class="text-center">Powered by <a href="https://blog.destroysquad.com/">Destroysquad.com</a></small>
+      <small class="text-center">2021 &copy; Ade Hafis Rabbani</small>
     </form>
   </div>
 

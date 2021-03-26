@@ -9,13 +9,15 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-  <title>Hello, world!</title>
+  <title>Terimakasih</title>
 </head>
 
 <body>
   <div style="position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);" class="text-center">
-    <img src="img_uploads/pks.png" style="height:200px; width:200px;">
-    <h2>Terima Kasih Telah Melakukan Pemilihan Ketua PKS Tahun 2020/2021</h2>
+    <img src="https://logowik.com/content/uploads/images/visual-studio-code7642.jpg" style="height:50%; width:50%;">
+    <h2>Terima Kasih Telah Melakukan Pemilihan Ketua {Code} Tahun 2020/2021</h2>
+    <small>Untuk Melihat Hasil Pemilihan <a href="pengumuman.php">Disini</a></small>
+    <br>
     <a href="logout_user.php">Logout</a>
   </div>
 

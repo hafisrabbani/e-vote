@@ -6,6 +6,8 @@ if (!isset($_SESSION['login'])) {
 require_once 'query/conn.php';
 $conn = new koneksi();
 $data = mysqli_query($conn->conn(), "SELECT * FROM kandidat");
+// $data = mysqli_fetch_assoc($data);
+
 
 
 ?>
@@ -26,7 +28,6 @@ $data = mysqli_query($conn->conn(), "SELECT * FROM kandidat");
   <!-- Favicon icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
   <!-- Custom CSS -->
-  <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
   <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
   <!-- Custom CSS -->
   <link href="css/style.min.css" rel="stylesheet">
@@ -43,35 +44,61 @@ $data = mysqli_query($conn->conn(), "SELECT * FROM kandidat");
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <a href="insert_kandidat.php" class="btn btn-primary mb-4"><i class="fas fa-plus"></i> Insert Kandidat</a>
-          <div class="row justify-content-center">
-            <?php foreach ($data as $rows) : ?>
-              <div class="col-lg-4 col-sm-6 col-xs-12">
-                <div class="white-box analytics-info">
-                  <div class=" card" style=" border:none;  width:100%; height: 200px; background-repeat:no-repeat; background-size: cover; background-image:url('../img_uploads/<?= $rows["foto"]; ?>'); background-position:center; border-radius:5px;">
+          <div class="white-box">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="white-box">
+                  <h3 class="box-title">List Kandidat</h3>
+                  <a href="insert_kandidat.php" class="btn btn-primary mb-4"><i class="fas fa-plus"></i> Kandidat</a>
+                  <div class="table-responsive">
+                    <table id="myTable" class="table">
+                      <thead>
+                        <tr>
+                          <th class="border-top-0">No</th>
+                          <th class="border-top-0">Foto</th>
+                          <th class="border-top-0">Nama</th>
+                          <th class="border-top-0">Kelas</th>
+                          <th class="border-top-0">Perolehan</th>
+                          <th class="border-top-0">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $i = 1;
+                        while ($result = mysqli_fetch_assoc($data)) : ?>
+                          <tr>
+                            <td><?= $i; ?></td>
+                            <td>
+                              <img src="../img_uploads/<?= $result["foto"] ?>" style="width:100px; height:100px;">
+                            </td>
+                            <td><?= $result["nama"] ?></td>
+                            <td><?= $result["kelas"]; ?></td>
+                            <td><?= $result["perolehan"] ?></td>
+                            <td><a href="delete_kandidat.php?id=<?= $result["id"]; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Ingin Menghapus Data Ini?');"><i class="fas fa-trash"></i></a>&nbsp;<a href="edit_kandidat.php?id=<?= $result["id"]; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a></td>
+                          </tr>
+                        <?php endwhile; ?>
+                      </tbody>
+                    </table>
                   </div>
-                  <h4 class="text-center"><?= $rows["nama"]; ?></h4>
-                  <div class="p-3 mb-2 bg-primary text-white">
-                    <h5 class="text-center">Total Suara : <?= $rows["perolehan"]; ?></h5>
-                  </div>
-                  <ul class="list-inline two-part d-flex align-items-center mb-0">
-                    <li class="ml-auto">
-                      <a href="delete_kandidat.php?id=<?= $rows["id"]; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Ingin Menghapus Data Ini?');"><i class="fas fa-trash"></i></a>
-                      <a href="edit_kandidat.php?id=<?= $rows["id"]; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                    </li>
-                  </ul>
                 </div>
               </div>
-            <?php endforeach; ?>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <?php include 'include/footer.php' ?>
   </div>
-  <?php include 'include/footer.php'; ?>
   <!-- All Jquery -->
   <!-- ============================================================== -->
-  <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="http://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="http://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+  <script>
+    $(document).ready(function() {
+      $('#myTable').DataTable();
+    });
+  </script>
   <!-- Bootstrap tether Core JavaScript -->
   <script src="plugins/bower_components/popper.js/dist/umd/popper.min.js"></script>
   <script src="bootstrap/dist/js/bootstrap.min.js"></script>
@@ -85,9 +112,7 @@ $data = mysqli_query($conn->conn(), "SELECT * FROM kandidat");
   <script src="js/custom.js"></script>
   <!--This page JavaScript -->
   <!--chartis chart-->
-  <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
-  <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-  <script src="js/pages/dashboards/dashboard1.js"></script>
+  <!-- <script src="js/pages/dashboards/dashboard1.js"></script> -->
 </body>
 
 </html>

@@ -3,19 +3,29 @@ session_start();
 if (!isset($_SESSION['login'])) {
   header("Location: login.php");
 }
+$id =  $_SESSION["id"];
+require_once 'query/conn.php';
+$conn = new koneksi();
+$data = mysqli_query($conn->conn(), "SELECT * FROM data_admin WHERE id = '$id'");
 if (isset($_POST['submit'])) {
   require_once 'query/query.php';
-  $nisn = htmlspecialchars($_POST['nisn']);
-  $nama = htmlspecialchars($_POST['nama']);
-  $pass = htmlspecialchars(($_POST['pass']));
-  $perwakilan = htmlspecialchars(($_POST['perwakilan']));
-  $insert = new insert_pemilih($nisn, $nama, $pass, $perwakilan);
-  if ($insert->input() === true) {
-    echo "<script>alert('Pemilih Berhasil Dibuat');window.location.replace('user.php');</script>";
+  $id = htmlspecialchars($_POST["id"]);
+  $nama = htmlspecialchars($_POST["nama"]);
+  $user = htmlspecialchars($_POST["username"]);
+  $pass = htmlspecialchars($_POST["password"]);
+  // cek password diisi atau tidak
+  // Ketika password kosong update tanpa password
+  $admin = new admin($id);
+  if ($pass == "") {
+    $update = $admin->update($nama, $user);
+    var_dump($update);
+    die;
   } else {
-    echo "<script>alert(Pemilih Gagal Dibuat');</script>";
+    $pass = password_hash($pass, PASSWORD_DEFAULT);
+    $update = $admin->update($nama, $user, $pass);
+    var_dump($update);
+    die;
   }
-  die;
 }
 
 
@@ -59,18 +69,20 @@ if (isset($_POST['submit'])) {
             <div class="row">
               <div class="col-sm-12">
                 <div class="white-box">
-                  <form method="post" action="">
-                    <div class="form-group">
-                      <label for="nisn">Username : </label>
-                      <input type="text" class="form-control" id="nisn" name="nisn" required>
-                      <label for="nama">Nama : </label>
-                      <input type="text" class="form-control" id="nama" name="nama" required>
-                      <label for="pass">Password : </label>
-                      <input type="text" class="form-control" id="pass" name="pass" required value="<?= substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5); ?>">
-                      <label for="perwakilan">Perwakilan : </label>
-                      <input type="text" class="form-control" id="perwakilan" name="perwakilan" required>
-                      <input type="submit" name="submit" class="btn btn-primary mt-4">
-                  </form>
+                  <h2>Setting Akun Admin</h2>
+                  <?php foreach ($data as $rows) : ?>
+                    <form method="post" action="">
+                      <input type="hidden" name="id" value="<?= $rows["id"]; ?>">
+                      <div class="form-group">
+                        <label for="Nama">Nama : </label>
+                        <input type="text" class="form-control" id="Nama" name="nama" required value="<?= $rows["nama"]; ?>">
+                        <label for="username">Username : </label>
+                        <input type="text" class="form-control" id="username" name="username" required value="<?= $rows["username"]; ?>">
+                        <label for="Password">Password : </label>
+                        <input type="password" class="form-control" id="Password" name="password" placeholder="Kosongkan bila tidak ingin mengganti password">
+                        <input type="submit" name="submit" class="btn btn-primary mt-4">
+                    </form>
+                  <?php endforeach; ?>
                 </div>
               </div>
             </div>
